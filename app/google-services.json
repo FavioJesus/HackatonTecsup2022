@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "439360987729",
+    "firebase_url": "https://pidm-02-default-rtdb.firebaseio.com",
+    "project_id": "pidm-02",
+    "storage_bucket": "pidm-02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:439360987729:android:548e1ddbd0793694ef4e70",
+        "android_client_info": {
+          "package_name": "com.fjgp.parcialguevara_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "439360987729-eseat5e4s8kvfimjh60nvj12e7cvojdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYZzAbt_iNrM_IIMKZgCI5f4T0ByKmxP4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "439360987729-eseat5e4s8kvfimjh60nvj12e7cvojdh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
