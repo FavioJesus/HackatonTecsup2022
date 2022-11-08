@@ -141,6 +141,13 @@ public class PrincipalActivity extends AppCompatActivity implements View.OnClick
         finish();
     }
 
+    public void irRegistroInputs(View view) {
+        System.out.println("Click en agregar data/input");
+        Intent intent = new Intent(PrincipalActivity.this, RegistrarInputs.class);
+        startActivity(intent);
+        finish();
+    }
+
     @Override
     public void onClick(View v) {
         if  (v==btnregresar){
