@@ -27,15 +27,16 @@
 
         <Button
             android:id="@+id/btn_regresarprincipal"
-            android:layout_width="wrap_content"
+            android:layout_width="84dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="180dp"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/orange"
-            android:textAllCaps="false"
-            android:outlineProvider="none"
             android:layout_marginTop="20dp"
-            android:text="Salir" />
+            android:backgroundTint="@color/white"
+            android:onClick="regresar"
+            android:outlineProvider="none"
+            android:text="Salir"
+            android:textAllCaps="false"
+            android:textColor="@color/orange" />
 
 
     </LinearLayout>
@@ -128,7 +129,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
-            android:text="Lista de Cursos"
+            android:text="Lista de aulas"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -168,18 +169,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:backgroundTint="@color/orange"
-            android:onClick="irRegistroCurso"
-            android:text="Agregar Curso" />
-
-        <Button
-            android:id="@+id/btn_agregar_data"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/orange"
-            android:onClick="irRegistroInputs"
-            android:text="Agregar data" />
+            android:onClick="agregarAula"
+            android:text="Agregar aula" />
 
     </LinearLayout>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".listar_curso">
+    tools:context=".ListarCurso">
 
     <LinearLayout
         android:gravity="center"
@@ -15,7 +15,7 @@
         android:layout_weight="1">
 
         <ImageView
-            android:id="@+id/detalle"
+            android:id="@+id/aula_icon"
             android:layout_width="55dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -43,7 +43,7 @@
             </TextView>
             <TextView
                 android:id="@+id/carrera_curso"
-                android:text="Carrera del curso"
+                android:text="Carrera del aula"
                 android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

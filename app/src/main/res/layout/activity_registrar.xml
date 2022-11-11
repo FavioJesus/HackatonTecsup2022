@@ -36,10 +36,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
-                android:textAllCaps="false"
-                android:outlineProvider="none"
                 android:backgroundTint="@color/white"
+                android:onClick="regresar"
+                android:outlineProvider="none"
                 android:text="salir"
+                android:textAllCaps="false"
                 android:textColor="@color/orange"
                 android:textColorLink="#FF5722"
                 android:textSize="15sp"
@@ -123,32 +124,6 @@
                     android:drawablePadding="10dp"
                     android:drawableTint="@color/letra"
                     android:hint="Telefono "
-                    android:padding="8dp"
-                    android:textColor="@color/letra" />
-
-                <EditText
-                    android:id="@+id/txt_facultad"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/editpp"
-                    android:drawableLeft="@drawable/ic_baseline_edit_note_24"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="@color/letra"
-                    android:hint="Facultad"
-                    android:padding="8dp"
-                    android:textColor="@color/letra" />
-
-                <EditText
-                    android:id="@+id/txt_Carrera"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@drawable/editpp"
-                    android:drawableLeft="@drawable/ic_baseline_engineering_24"
-                    android:drawablePadding="10dp"
-                    android:drawableTint="@color/letra"
-                    android:hint="Carrera"
                     android:padding="8dp"
                     android:textColor="@color/letra" />
 

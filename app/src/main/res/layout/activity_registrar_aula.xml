@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registrar_curso">
+    tools:context=".RegistrarAula">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingTop="10dp"
-                android:text="Registrar Curso"
+                android:text="Registrar Aula"
                 android:textAlignment="textStart"
                 android:textColor="@color/orange"
                 android:textSize="30dp"
@@ -53,69 +53,39 @@
 
 
                     <EditText
-                        android:id="@+id/txt_Nombre"
+                        android:id="@+id/txt_grado"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/editpp"
-                        android:drawableLeft="@drawable/ic_baseline_email_24"
-                        android:drawableTint="@color/letra"
                         android:drawablePadding="10dp"
-                        android:hint="Nombre del Curso"
+                        android:drawableTint="@color/letra"
+                        android:hint="Grado"
                         android:padding="8dp"
                         android:textColor="@color/letra" />
 
                     <EditText
-                        android:id="@+id/txt_Horario"
+                        android:id="@+id/txt_seccion"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@drawable/editpp"
                         android:layout_marginTop="40dp"
-                        android:drawableLeft="@drawable/ic_baseline_access_time_24"
-                        android:drawableTint="@color/letra"
+                        android:background="@drawable/editpp"
                         android:drawablePadding="10dp"
-                        android:hint="Horario"
+                        android:drawableTint="@color/letra"
+                        android:hint="Sección"
                         android:padding="8dp"
                         android:textColor="@color/letra" />
 
                     <EditText
-                        android:id="@+id/txt_Codigo"
+                        android:id="@+id/txt_anyo"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="@drawable/editpp"
                         android:layout_marginTop="40dp"
-                        android:drawableLeft="@drawable/ic_baseline_numbers_24"
-                        android:drawableTint="@color/letra"
+                        android:background="@drawable/editpp"
                         android:drawablePadding="10dp"
-                        android:hint="Codigo"
+                        android:drawableTint="@color/letra"
+                        android:hint="Año"
                         android:padding="8dp"
                         android:textColor="@color/letra" />
-
-                    <EditText
-                        android:id="@+id/txt_Sillabus"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/editpp"
-                        android:layout_marginTop="40dp"
-                        android:drawableLeft="@drawable/ic_baseline_edit_note_24"
-                        android:drawableTint="@color/letra"
-                        android:drawablePadding="10dp"
-                        android:hint="Sillabus"
-                        android:padding="8dp"
-                        android:textColor="@color/letra" />
-
-                    <EditText
-                        android:id="@+id/txt_Carrera"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/editpp"
-                        android:layout_marginTop="40dp"
-                        android:drawableLeft="@drawable/ic_baseline_engineering_24"
-                        android:drawableTint="@color/letra"
-                        android:drawablePadding="10dp"
-                        android:hint="Carrera"
-                        android:padding="8dp"
-                        android:textColor="@color/letra" />
-
 
 
                     <Button

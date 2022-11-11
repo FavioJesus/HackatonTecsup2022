@@ -17,45 +17,45 @@
             android:name=".RegistrarInputs"
             android:exported="false" />
         <activity
-            android:name=".informativo"
+            android:name=".ScreenSplash"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".registro_nota_alumno"
+            android:name=".RegistrarNotaAlumno"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".perfil_curso"
+            android:name=".PerfilAula"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".registro_alumno"
+            android:name=".RegistrarAlumno"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".OlvidarPass"
+            android:name=".RecuperarActivity"
             android:exported="false" />
         <activity
-            android:name=".listar_curso"
+            android:name=".ListarCurso"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".registrar_curso"
+            android:name=".RegistrarAula"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

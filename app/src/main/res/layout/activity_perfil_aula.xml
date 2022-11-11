@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".perfil_curso">
+    tools:context=".PerfilAula">
 
     <LinearLayout
         android:id="@+id/linearLayout6"
@@ -73,7 +73,7 @@
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="190dp"
-            android:text="Lista de Alumnos"
+            android:text="Lista de alumnos"
             android:textColor="@color/black"
             android:textStyle="bold">
 
@@ -111,7 +111,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_nombrecurso"
+                    android:id="@+id/tv_aula_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="20dp"
@@ -120,26 +120,36 @@
                     android:gravity="center"
                     android:paddingHorizontal="5dp"
                     android:paddingVertical="10dp"
-                    android:text="Nombre del Curso"
+                    android:text="Nombre del aula"
                     android:textColor="@color/orange"
                     android:textStyle="bold"></TextView>
 
                 <TextView
-                    android:id="@+id/txt_codigocurso"
+                    android:id="@+id/tv_aula_anyo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
-                    android:text="codigo del Curso "
+                    android:text="Año del aula"
                     android:textColor="@color/white">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/txt_horariocurso"
+                    android:id="@+id/tv_aula_grado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
-                    android:text="horario del Curso "
+                    android:text="Grado del aula"
+                    android:textColor="@color/white">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/tv_aula_seccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:text="Sección del aula"
                     android:textColor="@color/white">
 
                 </TextView>
@@ -170,7 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:backgroundTint="@color/orange"
-        android:onClick="irRegistroAlumno"
+        android:onClick="agregarAlumno"
         android:text="Registrar nuevo alumno"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

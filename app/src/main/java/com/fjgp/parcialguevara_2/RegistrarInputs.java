@@ -1,7 +1,6 @@
 package com.fjgp.parcialguevara_2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,65 +9,91 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RegistrarInputs extends AppCompatActivity {
 
     Spinner meses_sp;
-    EditText faltas_et, concentracion_et, apatia_et, culpa_et;
+    EditText n1_et, n2_et, n3_et, n4_et;
+    EditText faltas_et, concentracion_et, apatia_et;
     Button registrar_btn;
+
+    String alumno_codigo, aula_id;
 
     String userID;
     FirebaseUser user;
-    DatabaseReference reference;
-    DatabaseReference input_ref;
+    DatabaseReference inputData_reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_inputs);
 
+        n1_et = findViewById(R.id.n1_et);
+        n2_et = findViewById(R.id.n2_et);
+        n3_et = findViewById(R.id.n3_et);
+        n4_et = findViewById(R.id.n4_et);
         meses_sp = findViewById(R.id.meses_sp);
         faltas_et = findViewById(R.id.faltas_ed);
         concentracion_et = findViewById(R.id.concentracion_ed);
         apatia_et = findViewById(R.id.apatia_et);
-        culpa_et = findViewById(R.id.culpa_et);
         registrar_btn = findViewById(R.id.registrar_btn);
 
-        user= FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
-        reference= FirebaseDatabase.getInstance().getReference("Usuario");
-        input_ref = reference.child(userID).child("Input");
+        aula_id = getIntent().getStringExtra("aula_id");
+        alumno_codigo = getIntent().getStringExtra("alumno_codigo");
+
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        inputData_reference = FirebaseDatabase.getInstance().getReference()
+                .child("Profesores")
+                .child(userID)
+                .child("Aulas")
+                .child(aula_id)
+                .child("Alumnos")
+                .child(alumno_codigo)
+                .child("InputData");
 
         loadData();
 
         registrar_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String n1 = n1_et.getText().toString();
+                String n2 = n2_et.getText().toString();
+                String n3 = n3_et.getText().toString();
+                String n4 = n4_et.getText().toString();
                 String mes = meses_sp.getSelectedItem().toString();
                 String faltas = faltas_et.getText().toString();
                 String concentracion = concentracion_et.getText().toString();
                 String apatia = apatia_et.getText().toString();
-                String culpa = culpa_et.getText().toString();
 
-                if(!(faltas.isEmpty() || concentracion.isEmpty() || apatia.isEmpty() || culpa.isEmpty())) {
+                boolean notas_vacias = n1.isEmpty() || n2.isEmpty() || n3.isEmpty() || n4.isEmpty();
+                if (!(faltas.isEmpty() || concentracion.isEmpty() || apatia.isEmpty() || notas_vacias)) {
                     InputData data = new InputData();
+                    data.setN1(Integer.parseInt(n1));
+                    data.setN2(Integer.parseInt(n2));
+                    data.setN3(Integer.parseInt(n3));
+                    data.setN4(Integer.parseInt(n4));
                     data.setFaltas(Integer.parseInt(faltas));
                     data.setConcentacion(Integer.parseInt(concentracion));
                     data.setApatia(Integer.parseInt(apatia));
-                    data.setCulpa(Integer.parseInt(culpa));
 
-                    input_ref.child(mes).setValue(data);
+                    getAllData(mes, data);
+                } else {
+                    Toast.makeText(RegistrarInputs.this.getApplicationContext(), "Campos vacios !!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -81,55 +106,156 @@ public class RegistrarInputs extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                Log.i("Diego", "onNothingSelected: nada seleccionado");
+                Log.e(TAG, "onNothingSelected: ");
             }
         });
     }
 
     void loadData() {
         String mes = meses_sp.getSelectedItem().toString();
-        input_ref.child(mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        inputData_reference.child(mes).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
                     DataSnapshot snapshot = task.getResult();
 
-                    Log.i("Diego", snapshot.toString());
                     if (snapshot.exists()) {
                         InputData data = snapshot.getValue(InputData.class);
-                        Log.i("Diego", data.toString());
 
+                        n1_et.setText(String.valueOf(data.n1));
+                        n2_et.setText(String.valueOf(data.n2));
+                        n3_et.setText(String.valueOf(data.n3));
+                        n4_et.setText(String.valueOf(data.n4));
                         faltas_et.setText(String.valueOf(data.getFaltas()));
                         concentracion_et.setText(String.valueOf(data.getConcentacion()));
                         apatia_et.setText(String.valueOf(data.getApatia()));
-                        culpa_et.setText(String.valueOf(data.getCulpa()));
                     } else {
+                        n1_et.setText("");
+                        n2_et.setText("");
+                        n3_et.setText("");
+                        n4_et.setText("");
                         faltas_et.setText("");
                         concentracion_et.setText("");
                         apatia_et.setText("");
-                        culpa_et.setText("");
                     }
                 }
             }
         });
     }
+
+    void getAllData(String mes, InputData data1) {
+        if (!"Enero".equals(mes)) {
+            inputData_reference.child(getFormerMonth(mes)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DataSnapshot dataSnapshot = task.getResult();
+                        InputData data0 = dataSnapshot.getValue(InputData.class);
+
+                        calcularStatus(data0, data1, mes);
+                    }
+                }
+            });
+        } else {
+            saveData(data1, mes);
+        }
+    }
+
+    void calcularStatus(InputData data0, InputData data1, String mes) {
+        // TODO
+        // lo del modelo
+
+        data1.setStatus(0);
+        saveData(data1, mes);
+    }
+
+    void saveData(InputData data, String mes) {
+        setCurrentStatus(data);
+        inputData_reference.child(mes).setValue(data);
+
+        Toast.makeText(RegistrarInputs.this.getApplicationContext(), "Registro correcto 👍", Toast.LENGTH_SHORT).show();
+    }
+
+    String getFormerMonth(String mes) {
+        String[] meses = getResources().getStringArray(R.array.meses);
+        ArrayList list_meses = new ArrayList(Arrays.asList(meses));
+        int mes_index = list_meses.indexOf(mes);
+        return meses[mes_index - 1];
+    }
+
+    void setCurrentStatus(InputData data) {
+        FirebaseDatabase.getInstance().getReference()
+                .child("Profesores")
+                .child(userID)
+                .child("Aulas")
+                .child(aula_id)
+                .child("Alumnos")
+                .child(alumno_codigo)
+                .child("currentStatus")
+                .setValue(data.getStatus());
+    }
 }
 
 class InputData {
-    String meses;
+    int n1;
+    int n2;
+    int n3;
+    int n4;
+    String mes;
     int faltas;
     int concentacion;
     int apatia;
-    int culpa;
+    int status;
 
-    public InputData() {}
-
-    public String getMeses() {
-        return meses;
+    public float getStatus() {
+        return status;
     }
 
-    public void setMeses(String meses) {
-        this.meses = meses;
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public InputData() {
+    }
+
+    public int getN1() {
+        return n1;
+    }
+
+    public void setN1(int n1) {
+        this.n1 = n1;
+    }
+
+    public int getN2() {
+        return n2;
+    }
+
+    public void setN2(int n2) {
+        this.n2 = n2;
+    }
+
+    public int getN3() {
+        return n3;
+    }
+
+    public void setN3(int n3) {
+        this.n3 = n3;
+    }
+
+    public int getN4() {
+        return n4;
+    }
+
+    public void setN4(int n4) {
+        this.n4 = n4;
+    }
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
     }
 
     public int getFaltas() {
@@ -154,13 +280,5 @@ class InputData {
 
     public void setApatia(int apatia) {
         this.apatia = apatia;
-    }
-
-    public int getCulpa() {
-        return culpa;
-    }
-
-    public void setCulpa(int culpa) {
-        this.culpa = culpa;
     }
 }

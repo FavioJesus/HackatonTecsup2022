@@ -1,14 +1,14 @@
 package com.fjgp.parcialguevara_2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class informativo extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ScreenSplash extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informativo);
+        setContentView(R.layout.splash_screen);
     }
 }
