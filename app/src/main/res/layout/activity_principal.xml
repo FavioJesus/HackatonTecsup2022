@@ -7,39 +7,7 @@
     android:orientation="vertical"
     tools:context=".PrincipalActivity"
 >
-    <LinearLayout
-        android:id="@+id/linearLayout6"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:layout_width="138dp"
-            android:layout_height="90dp"
-            android:layout_gravity="fill_horizontal"
-            android:src="@drawable/lgoo">
-
-        </ImageView>
-
-        <Button
-            android:id="@+id/btn_regresarprincipal"
-            android:layout_width="84dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="180dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/white"
-            android:onClick="regresar"
-            android:outlineProvider="none"
-            android:text="Salir"
-            android:textAllCaps="false"
-            android:textColor="@color/orange" />
-
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -48,13 +16,13 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginHorizontal="20dp"
+
         android:layout_weight="4"
         android:layout_marginTop="10dp"
-        android:background="@drawable/persona_inicio"
+        android:background="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+        tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:id="@+id/cuadrousuario"
@@ -99,10 +67,12 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="266dp"
+                    android:layout_height="181dp"
+                    android:layout_marginHorizontal="0dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="6dp"
-                    android:src="@drawable/incio_perfil"></ImageView>
+                    android:src="@drawable/inicio_perfil2"></ImageView>
 
             </LinearLayout>
 

@@ -16,9 +16,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logonaranja">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="20dp"
+            android:src="@drawable/logodos">
 
         </ImageView>
     </LinearLayout>
