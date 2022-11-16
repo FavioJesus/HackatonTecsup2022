@@ -180,7 +180,7 @@ public class RegistrarInputs extends AppCompatActivity {
     }
 
 
-    void machinelearning(InputData data0, InputData data1, float sum, String mes) {
+    void machinelearning(InputData data0, InputData data1, float faltas_prom, String mes) {
         float matriz_data[] = {
                 data0.getN1(),
                 data0.getN2(),
@@ -190,7 +190,7 @@ public class RegistrarInputs extends AppCompatActivity {
                 data1.getN2(),
                 data1.getN3(),
                 data1.getN4(),
-                data1.getFaltas() / sum,
+                data1.getFaltas() / faltas_prom,
                 data1.getConcentacion(),
                 data1.getApatia(),
         };
@@ -207,7 +207,7 @@ public class RegistrarInputs extends AppCompatActivity {
             TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
             float[] res = outputFeature0.getFloatArray();
 
-            data1.setStatus(Math.round(res[0]*100));
+            data1.setStatus(Math.min(Math.round(res[0]*100), 100));
             saveData(data1, mes);
 
             // Releases model resources if no longer used.
@@ -237,32 +237,31 @@ public class RegistrarInputs extends AppCompatActivity {
 
                                 try {
                                     DataSnapshot res = Tasks.await(t);
-                                    if (alumno_codigo.equals(alumno1.getCodigo())) {
-                                        list_data.add(data1);
-                                    } else {
-                                        list_data.add(res.getValue(InputData.class));
+                                    if (res.getValue(InputData.class) != null) {
+                                        if (alumno_codigo.equals(alumno1.getCodigo())) {
+                                            list_data.add(data1);
+                                        } else {
+                                            list_data.add(res.getValue(InputData.class));
+                                        }
                                     }
-
-                                    //calculando el promedio
-                                    Log.i("Diego", "" + list_data.get(0));
-                                    float p = 0;
-                                    for (int i = 0; i < list_data.size(); i++) {
-                                        p += list_data.get(i).getFaltas();
-                                    }
-                                    if (list_data.size() != 0)
-                                        p = p / list_data.size();
-
-                                    Log.i("Promedio", String.valueOf(p) + " <> " + String.valueOf(list_data.size()));
-
-                                    aula_reference.child("pdfdum").setValue(p);
-
-                                    machinelearning(data0, data1, p, mes);
                                 } catch (ExecutionException e) {
                                     e.printStackTrace();
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
                             }
+
+                            //calculando el promedio
+                            float p = 0;
+                            for (int i = 0; i < list_data.size(); i++) {
+                                p += list_data.get(i).getFaltas();
+                            }
+                            if (list_data.size() != 0)
+                                p = p / list_data.size();
+
+                            aula_reference.child("pdfdum").setValue(p);
+
+                            machinelearning(data0, data1, p, mes);
                         }
                     };
 
