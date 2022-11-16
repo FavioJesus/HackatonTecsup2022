@@ -3,6 +3,9 @@ package com.fjgp.parcialguevara_2;
 import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,16 +17,27 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fjgp.parcialguevara_2.alumno.Alumno;
+import com.fjgp.parcialguevara_2.ml.MlBlHt;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.tensorflow.lite.DataType;
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
+
+import java.io.DataInput;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+
+import javax.security.auth.login.LoginException;
 
 public class RegistrarInputs extends AppCompatActivity {
 
@@ -37,6 +51,8 @@ public class RegistrarInputs extends AppCompatActivity {
     String userID;
     FirebaseUser user;
     DatabaseReference inputData_reference;
+    DatabaseReference aula_reference;
+    ArrayList<InputData> list_data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +73,13 @@ public class RegistrarInputs extends AppCompatActivity {
         alumno_codigo = getIntent().getStringExtra("alumno_codigo");
 
         userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        inputData_reference = FirebaseDatabase.getInstance().getReference()
+        aula_reference = FirebaseDatabase.getInstance().getReference()
                 .child("Profesores")
                 .child(userID)
                 .child("Aulas")
-                .child(aula_id)
+                .child(aula_id);
+
+        inputData_reference = aula_reference
                 .child("Alumnos")
                 .child(alumno_codigo)
                 .child("InputData");
@@ -152,7 +170,7 @@ public class RegistrarInputs extends AppCompatActivity {
                         DataSnapshot dataSnapshot = task.getResult();
                         InputData data0 = dataSnapshot.getValue(InputData.class);
 
-                        calcularStatus(data0, data1, mes);
+                        calcularPromedioDeFaltas(data0, data1, mes);
                     }
                 }
             });
@@ -161,19 +179,102 @@ public class RegistrarInputs extends AppCompatActivity {
         }
     }
 
-    void calcularStatus(InputData data0, InputData data1, String mes) {
-        // TODO
-        // lo del modelo
 
-        data1.setStatus(0);
-        saveData(data1, mes);
+    void machinelearning(InputData data0, InputData data1, float sum, String mes) {
+        float matriz_data[] = {
+                data0.getN1(),
+                data0.getN2(),
+                data0.getN3(),
+                data0.getN4(),
+                data1.getN1(),
+                data1.getN2(),
+                data1.getN3(),
+                data1.getN4(),
+                data1.getFaltas() / sum,
+                data1.getConcentacion(),
+                data1.getApatia(),
+        };
+
+        try {
+            MlBlHt model = MlBlHt.newInstance(this);
+
+            // Creates inputs for reference.
+            TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1, 11}, DataType.FLOAT32);
+            inputFeature0.loadArray(matriz_data);
+
+            // Runs model inference and gets result.
+            MlBlHt.Outputs outputs = model.process(inputFeature0);
+            TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
+            float[] res = outputFeature0.getFloatArray();
+
+            data1.setStatus(Math.round(res[0]*100));
+            saveData(data1, mes);
+
+            // Releases model resources if no longer used.
+            model.close();
+        } catch (IOException e) {
+            // TODO Handle the exception
+        }
+    }
+
+    void calcularPromedioDeFaltas(InputData data0, InputData data1, String mes) {
+        aula_reference.child("Alumnos").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    Thread thread = new Thread() {
+                        public void run() {
+                            DataSnapshot dataSnapshot = task.getResult();
+
+                            list_data.clear();
+                            for (DataSnapshot alumno : dataSnapshot.getChildren()) {
+                                Alumno alumno1 = alumno.getValue(Alumno.class);
+                                Task<DataSnapshot> t = aula_reference
+                                        .child("Alumnos")
+                                        .child(alumno1.getCodigo())
+                                        .child("InputData")
+                                        .child(mes).get();
+
+                                try {
+                                    DataSnapshot res = Tasks.await(t);
+                                    if (alumno_codigo.equals(alumno1.getCodigo())) {
+                                        list_data.add(data1);
+                                    } else {
+                                        list_data.add(res.getValue(InputData.class));
+                                    }
+
+                                    //calculando el promedio
+                                    Log.i("Diego", "" + list_data.get(0));
+                                    float p = 0;
+                                    for (int i = 0; i < list_data.size(); i++) {
+                                        p += list_data.get(i).getFaltas();
+                                    }
+                                    if (list_data.size() != 0)
+                                        p = p / list_data.size();
+
+                                    Log.i("Promedio", String.valueOf(p) + " <> " + String.valueOf(list_data.size()));
+
+                                    aula_reference.child("pdfdum").setValue(p);
+
+                                    machinelearning(data0, data1, p, mes);
+                                } catch (ExecutionException e) {
+                                    e.printStackTrace();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    };
+
+                    thread.start();
+                }
+            }
+        });
     }
 
     void saveData(InputData data, String mes) {
         setCurrentStatus(data);
         inputData_reference.child(mes).setValue(data);
-
-        Toast.makeText(RegistrarInputs.this.getApplicationContext(), "Registro correcto 👍", Toast.LENGTH_SHORT).show();
     }
 
     String getFormerMonth(String mes) {
@@ -184,11 +285,7 @@ public class RegistrarInputs extends AppCompatActivity {
     }
 
     void setCurrentStatus(InputData data) {
-        FirebaseDatabase.getInstance().getReference()
-                .child("Profesores")
-                .child(userID)
-                .child("Aulas")
-                .child(aula_id)
+        aula_reference
                 .child("Alumnos")
                 .child(alumno_codigo)
                 .child("currentStatus")

@@ -4,6 +4,7 @@ public class Aula {
     private String grado;
     private String seccion;
     private String anyo;
+    private float pdfdum; // promedio de faltas del ultimo mes
 
     public Aula() {}
 
@@ -35,5 +36,13 @@ public class Aula {
 
     public void setAnyo(String anyo) {
         this.anyo = anyo;
+    }
+
+    public float getPdfdum() {
+        return pdfdum;
+    }
+
+    public void setPdfdum(float pdfdum) {
+        this.pdfdum = pdfdum;
     }
 }
