@@ -13,13 +13,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="130dp"
                 android:layout_gravity="clip_vertical">
 
                 <ImageView
                     android:layout_width="138dp"
                     android:layout_height="90dp"
-                    android:layout_gravity="fill_horizontal"
+                    android:layout_gravity="center_horizontal"
                     android:src="@drawable/lgoo">
 
                 </ImageView>
@@ -31,14 +32,14 @@
             <TextView
 
                 android:id="@+id/registrar_alumno"
-                android:layout_width="337dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
-                android:paddingTop="10dp"
+                android:paddingTop="80dp"
                 android:text="Registrar Aula"
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textColor="@color/orange"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <ScrollView
@@ -94,7 +95,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_gravity="center"
-                        android:backgroundTint="@color/orange"
+                        android:background="@drawable/fondo"
                         android:text="Registrar"
                         android:textSize="18sp"
                         app:cornerRadius="20dp" />

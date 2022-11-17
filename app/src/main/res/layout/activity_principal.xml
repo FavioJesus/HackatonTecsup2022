@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,13 +12,12 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="181dp"
+        android:layout_height="160dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
 
         android:layout_weight="4"
-        android:layout_marginTop="10dp"
         android:background="@color/orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +31,11 @@
             android:weightSum="2">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="372dp"
+                android:layout_height="239dp"
                 android:layout_weight="1"
+                android:paddingTop="40dp"
+                android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -52,9 +53,10 @@
 
                 <TextView
                     android:id="@+id/txt_usuariologeado"
-                    android:layout_width="match_parent"
+                    android:layout_width="186dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="10dp"
+                    android:gravity="center"
                     android:text="Saludos e inicio "
                     android:textColor="@color/white">
 
@@ -68,7 +70,7 @@
 
                 <ImageView
                     android:layout_width="266dp"
-                    android:layout_height="181dp"
+                    android:layout_height="239dp"
                     android:layout_marginHorizontal="0dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="6dp"
@@ -110,27 +112,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listacursos"
         android:layout_width="370dp"
-        android:layout_height="277dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
+        android:layout_height="312dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.34"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:layout_width="408dp"
         android:layout_height="61dp"
         android:gravity="center_horizontal"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listacursos">
+        android:orientation="horizontal">
 
 
         <Button
@@ -138,13 +129,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:backgroundTint="@color/orange"
+            android:background="@drawable/fondo"
             android:onClick="agregarAula"
-            android:text="Agregar aula" />
+            android:text="Agregar aula"
+            app:cornerRadius="20dp"/>
 
     </LinearLayout>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
 

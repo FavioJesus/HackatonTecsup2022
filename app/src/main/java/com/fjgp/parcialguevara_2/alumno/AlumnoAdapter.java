@@ -64,7 +64,6 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             super(itemView);
             tv_nombres = (TextView) itemView.findViewById(R.id.apellido_alumno);
             tv_apellidos = (TextView) itemView.findViewById(R.id.nombre_alumno);
-            tv_codigo = (TextView) itemView.findViewById(R.id.codigo_alumno);
             iv_icon = (ImageView) itemView.findViewById(R.id.detalle1);
 
             itemView.setOnClickListener(this);

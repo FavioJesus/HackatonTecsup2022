@@ -61,7 +61,6 @@ public class AulaAdapter extends RecyclerView.Adapter<AulaAdapter.AulaViewHolder
             super(itemView);
             tv_grado = (TextView) itemView.findViewById(R.id.nombre_curso);
             tv_seccion = (TextView) itemView.findViewById(R.id.carrera_curso);
-            tv_anyo = (TextView) itemView.findViewById(R.id.codigo_curso);
             iv_icon = (ImageView) itemView.findViewById(R.id.aula_icon);
 
             itemView.setOnClickListener(this);

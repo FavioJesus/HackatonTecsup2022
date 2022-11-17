@@ -15,7 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_margin="20px"
+
+            android:layout_marginHorizontal="130dp"
             android:layout_gravity="clip_vertical">
 
             <ImageView
@@ -31,14 +32,14 @@
         <TextView
 
             android:id="@+id/registrar_alumno"
-            android:layout_width="337dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
-            android:paddingTop="10dp"
+            android:paddingTop="50dp"
             android:text="Registrar Alumno"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/orange"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <ScrollView
@@ -114,7 +115,7 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="30dp"
-                    android:backgroundTint="@color/orange"
+                    android:background="@drawable/fondo"
                     android:onClick="registrarAlumno"
                     android:text="Registrar"
                     android:textSize="18sp"

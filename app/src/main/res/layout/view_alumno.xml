@@ -3,72 +3,74 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
     tools:context=".ListarCurso">
 
-    <LinearLayout
-        android:gravity="center"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="5"
-        android:layout_weight="1">
-
-        <ImageView
-            android:id="@+id/detalle1"
-            android:layout_width="12dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:src="@drawable/estudiante">
-
-        </ImageView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/loginpp">
 
         <LinearLayout
-            android:layout_width="26dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingHorizontal="1dp">
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:weightSum="5">
 
-            <TextView
-                android:id="@+id/apellido_alumno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Apellido del alumno"
-                android:textColor="@color/black"
-                android:textSize="20dp"
-                android:textStyle="bold">
+            <LinearLayout
+                android:layout_width="152dp"
+                android:layout_height="wrap_content">
 
-            </TextView>
 
-            <TextView
-                android:id="@+id/nombre_alumno"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="nombre  alumno"
-                android:textColor="@color/black">
+                <ImageView
+                    android:id="@+id/detalle1"
+                    android:layout_width="182dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:src="@drawable/fondocurso">
 
-            </TextView>
+                </ImageView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="188dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingHorizontal="1dp">
+
+                <TextView
+                    android:id="@+id/apellido_alumno"
+                    android:layout_width="198dp"
+                    android:layout_height="wrap_content"
+                    android:text="Apellido del alumno"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/nombre_alumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="nombre  alumno"
+                    android:textColor="#BFC0C3"
+                    android:textStyle="bold">
+
+                </TextView>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/codigo_alumno"
-            android:layout_width="97dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/editpp"
-            android:gravity="center"
-            android:paddingHorizontal="5dp"
-            android:paddingVertical="10dp"
-            android:text="codigo  "
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold">
+    </androidx.cardview.widget.CardView>
 
-        </TextView>
-    </LinearLayout>
 
 </LinearLayout>
