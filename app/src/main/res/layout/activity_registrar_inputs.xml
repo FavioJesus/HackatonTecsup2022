@@ -22,7 +22,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:text="Presente mes"
+            android:text="Mes"
             android:layout_height="wrap_content">
 
         </TextView>
@@ -34,7 +34,13 @@
             android:background="@drawable/loginpp"/>
 
 
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:text="Cantidad de faltas en el mes"
+            android:layout_height="wrap_content">
 
+        </TextView>
 
         <EditText
             android:layout_width="match_parent"
@@ -47,10 +53,18 @@
             android:padding="8dp"
             android:textColor="@color/black"
             android:textColorHighlight="@color/cardview_dark_background"
-            android:layout_marginTop="40dp"/>
+            />
 
 
+        <TextView
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:text="Ingrese la desconcentración teniendo a 0 como minima y 5 como maxima">
 
+        </TextView>
 
         <EditText
             android:layout_width="match_parent"
@@ -59,13 +73,21 @@
             android:background="@drawable/loginpp"
             android:drawablePadding="8dp"
             android:inputType="number"
-            android:hint="concentracion 0..5"
+            android:hint="Desconcentración"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textColorHighlight="@color/cardview_dark_background"
-            android:layout_marginTop="40dp"/>
+            android:textColorHighlight="@color/cardview_dark_background" />
 
 
+        <TextView
+            android:layout_width="279dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center_horizontal"
+            android:text="Ingrese la apatía teniendo a 0 como minima y 5 como maxima">
+
+        </TextView>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -73,11 +95,10 @@
             android:background="@drawable/loginpp"
             android:drawablePadding="8dp"
             android:inputType="number"
-            android:hint="Apatia"
+            android:hint="Apatía"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textColorHighlight="@color/cardview_dark_background"
-            android:layout_marginTop="40dp"/>
+            android:textColorHighlight="@color/cardview_dark_background" />
 
         <EditText
             android:layout_width="match_parent"
