@@ -129,10 +129,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/fondo"
+            android:backgroundTint="@color/orange"
+            app:cornerRadius="20dp"
             android:onClick="agregarAula"
-            android:text="Agregar aula"
-            app:cornerRadius="20dp"/>
+            android:text="Agregar aula" />
 
     </LinearLayout>
 

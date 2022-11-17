@@ -170,7 +170,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30dp"
         android:backgroundTint="@color/orange"
+        app:cornerRadius="20dp"
         android:onClick="agregarAlumno"
+
         android:text="Registrar nuevo alumno"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

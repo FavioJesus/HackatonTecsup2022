@@ -95,9 +95,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/fondo"
                         android:text="Registrar"
                         android:textSize="18sp"
+                        android:backgroundTint="@color/orange"
                         app:cornerRadius="20dp" />
 
 

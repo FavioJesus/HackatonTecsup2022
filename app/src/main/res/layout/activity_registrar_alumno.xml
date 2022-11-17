@@ -115,11 +115,11 @@
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/fondo"
+                    android:backgroundTint="@color/orange"
+                    app:cornerRadius="20dp"
                     android:onClick="registrarAlumno"
                     android:text="Registrar"
-                    android:textSize="18sp"
-                    app:cornerRadius="20dp" />
+                    android:textSize="18sp" />
 
 
             </LinearLayout>

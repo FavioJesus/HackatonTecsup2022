@@ -4,90 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
     tools:context=".RegistrarInputs">
+
+    <ScrollView
+        android:layout_margin="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp">
 
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Presente mes"
+            android:layout_height="wrap_content">
+
+        </TextView>
         <Spinner
             android:id="@+id/meses_sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/meses" />
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:entries="@array/meses"
+            android:background="@drawable/loginpp"/>
+
+
+
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/faltas_ed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="faltas 0..30"
-            android:inputType="number" />
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Cantidad de faltas"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
+
+
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/concentracion_ed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
             android:hint="concentracion 0..5"
-            android:inputType="number" />
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/apatia_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="apatia 0..5"
-            android:inputType="number" />
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Apatia"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/n1_et"
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Primer Curso"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/n2_et"
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Segundo Curso"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/n3_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:hint="curso 3"
-            android:inputType="number" />
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Tercer Curso"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
 
         <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/n4_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="curso 4"
-            android:inputType="number" />
+            android:background="@drawable/loginpp"
+            android:drawablePadding="8dp"
+            android:inputType="number"
+            android:hint="Cuarto curso"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHighlight="@color/cardview_dark_background"
+            android:layout_marginTop="40dp"/>
+
+
+
 
         <Button
             android:id="@+id/registrar_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Registrar" />
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/orange"
+            android:text="Registrar"
+            android:textSize="18sp"
+            app:cornerRadius="20dp" />
 
-        <EditText
-            android:id="@+id/n1_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:ems="10"
-            android:hint="curso 1"
-            android:inputType="number" />
 
-        <EditText
-            android:id="@+id/n2_et"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="curso 2"
-            android:inputType="number" />
+
+
+
+
+
 
     </LinearLayout>
+
+</ScrollView>
 
 
 </LinearLayout>
