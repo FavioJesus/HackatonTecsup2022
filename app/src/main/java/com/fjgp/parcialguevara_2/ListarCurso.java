@@ -12,15 +12,15 @@ public class ListarCurso extends AppCompatActivity {
     private TextView codigo;
     private ImageView detalle;
 
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_aula);
 
-        codigo = (TextView) findViewById(R.id.codigo_alumno);
+        codigo = (TextView) findViewById(R.id.codigo_curso);
         detalle = (ImageView) findViewById(R.id.detalle1);
 
-    }*/
+    }
 
     public void detalleCurso() {
         System.out.println("Click en detalle curso");

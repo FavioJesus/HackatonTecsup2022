@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
+    android:textAlignment="center"
     tools:context=".ListarCurso">
 
     <androidx.cardview.widget.CardView
@@ -26,7 +27,7 @@
 
                 <ImageView
                     android:id="@+id/detalle1"
-                    android:layout_width="182dp"
+                    android:layout_width="123dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:clickable="true"
@@ -37,7 +38,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="188dp"
+                android:layout_width="207dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="3"
@@ -46,12 +47,20 @@
                 android:paddingHorizontal="1dp">
 
                 <TextView
+                    android:id="@+id/codigo_alumno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Codigo alumno"
+                    android:textAlignment="center" />
+
+                <TextView
                     android:id="@+id/apellido_alumno"
-                    android:layout_width="198dp"
+                    android:layout_width="208dp"
                     android:layout_height="wrap_content"
                     android:text="Apellido del alumno"
+                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -61,6 +70,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="nombre  alumno"
+                    android:textAlignment="center"
                     android:textColor="#BFC0C3"
                     android:textStyle="bold">
 

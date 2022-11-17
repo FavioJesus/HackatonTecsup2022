@@ -65,17 +65,17 @@ public class AlumnoAdapter extends RecyclerView.Adapter<AlumnoAdapter.AlumnoView
             tv_nombres = (TextView) itemView.findViewById(R.id.apellido_alumno);
             tv_apellidos = (TextView) itemView.findViewById(R.id.nombre_alumno);
             iv_icon = (ImageView) itemView.findViewById(R.id.detalle1);
-
+            tv_codigo = (TextView) itemView.findViewById(R.id.codigo_alumno);
             itemView.setOnClickListener(this);
         }
 
         public void bindData(Alumno alumno) {
             if (alumno.getCurrentStatus() > 50) {
-                tv_nombres.setTextColor(Color.RED);
-                tv_apellidos.setTextColor(Color.RED);
+                tv_nombres.setTextColor(Color.parseColor("#F2949B"));
+                tv_apellidos.setTextColor(Color.parseColor("#F2949B"));
             } else {
-                tv_nombres.setTextColor(Color.GREEN);
-                tv_apellidos.setTextColor(Color.GREEN);
+                tv_nombres.setTextColor(Color.parseColor("#99AFDB"));
+                tv_apellidos.setTextColor(Color.parseColor("#99AFDB"));
             }
 
             tv_nombres.setText(alumno.getNombre());

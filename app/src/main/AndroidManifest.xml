@@ -35,14 +35,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".RegistrarNotaAlumno"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
+               <activity
             android:name=".PerfilAula"
             android:exported="false">
             <meta-data
@@ -73,9 +66,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".ListarActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RegistrarActivity"
             android:exported="false" />
